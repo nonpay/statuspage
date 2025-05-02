@@ -50,6 +50,7 @@ do
     echo "    $dateTime, $result"
   fi
 done
+git pull
 git config --global user.name 'Nonpay Status'
 git config --global user.email 'nonpay@mrcheat.org'
 git add -A --force logs/

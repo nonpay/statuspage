@@ -2,15 +2,17 @@ name: Scheduled Health Check
 
 on:
   schedule:
-    - cron: "5 * * * *"
-  workflow_dispatch:  # 
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
-  health_check_job:
+  health_check:
     runs-on: ubuntu-latest
-    name: Check all sites
     steps:
       - uses: actions/checkout@v2
-      - name: Run Shell Script
-        id: shell_script_run
-        run: bash ./health-check.sh
+
+      - name: Make script executable
+        run: chmod +x health-check.sh
+
+      - name: Run health-check
+        run: ./health-check.sh
